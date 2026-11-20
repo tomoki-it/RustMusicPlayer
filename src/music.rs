@@ -7,6 +7,7 @@ pub struct Music {
 }
 
 impl Music {
+
     pub fn create (title: &str, path: &str) -> Music {
         Music{title: title.to_string(), path: path.to_string()}
     }
