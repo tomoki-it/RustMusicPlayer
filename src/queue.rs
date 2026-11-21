@@ -13,7 +13,7 @@ enum RepeatMode{
 #[derive(Default)]
 struct Queue {
     queue: VecDeque<Music>,
-    current: i16,
+    current: usize,
 }
 
 impl Queue {
@@ -22,7 +22,15 @@ impl Queue {
         Self::default()
     }
 
-    pub fn add(&mut self, data: Music) {
-        self.queue.insert(0, data);
+    pub fn insert(&mut self, index:usize, music: Music) {
+        self.queue.insert(index, music)
+    }
+
+    pub fn add(&mut self, music: Music) {
+        self.queue.push_back(music)
+    }
+
+    pub fn remove_from_index(&mut self, index:usize) -> bool {
+        self.queue.remove(index).is_some()
     }
 }
